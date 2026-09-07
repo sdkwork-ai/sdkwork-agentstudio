@@ -5,5 +5,9 @@ environment = "staging"
 [[http.server]]
 listen = ["80"]
 serverName = ["agentstudio-staging.sdkwork.com", "agentstudio-staging.birdcoder.com", "agentstudio-staging.dtupay.com", "agentstudio-staging.noaper.com", "agentstudio-staging.sdkwork.cn", "agentstudio-staging.birdcoder.cn", "agentstudio-staging.dtupay.cn", "agentstudio-staging.noaper.cn", "agentstudio-staging.skubc.com", "agentstudio-staging.skubc.cn", "agentstudio-staging.zowalk.com", "agentstudio-staging.zowalk.cn", "agentstudio-staging.offer86.com", "agentstudio-staging.offer86.cn", "agentstudio-staging.86offer.com", "agentstudio-staging.86offer.cn", "agentstudio-app-staging.sdkwork.com", "agentstudio-app-staging.birdcoder.com", "agentstudio-app-staging.dtupay.com", "agentstudio-app-staging.noaper.com", "agentstudio-app-staging.sdkwork.cn", "agentstudio-app-staging.birdcoder.cn", "agentstudio-app-staging.dtupay.cn", "agentstudio-app-staging.noaper.cn", "agentstudio-app-staging.skubc.com", "agentstudio-app-staging.skubc.cn", "agentstudio-app-staging.zowalk.com", "agentstudio-app-staging.zowalk.cn", "agentstudio-app-staging.offer86.com", "agentstudio-app-staging.offer86.cn", "agentstudio-app-staging.86offer.com", "agentstudio-app-staging.86offer.cn", "agentstudio-admin-staging.sdkwork.com", "agentstudio-admin-staging.birdcoder.com", "agentstudio-admin-staging.dtupay.com", "agentstudio-admin-staging.noaper.com", "agentstudio-admin-staging.sdkwork.cn", "agentstudio-admin-staging.birdcoder.cn", "agentstudio-admin-staging.dtupay.cn", "agentstudio-admin-staging.noaper.cn", "agentstudio-admin-staging.skubc.com", "agentstudio-admin-staging.skubc.cn", "agentstudio-admin-staging.zowalk.com", "agentstudio-admin-staging.zowalk.cn", "agentstudio-admin-staging.offer86.com", "agentstudio-admin-staging.offer86.cn", "agentstudio-admin-staging.86offer.com", "agentstudio-admin-staging.86offer.cn"]
-include = ["snippets/gateway-locations.nonproduction.conf"]
+include = ["snippets/adaptive-web.named-locations.conf", "snippets/gateway-api-locations.nonproduction.conf"]
+
+[[http.server.location]]
+match = "/"
+include = ["snippets/adaptive-web.dispatch.conf"]
 

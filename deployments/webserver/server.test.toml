@@ -5,5 +5,9 @@ environment = "test"
 [[http.server]]
 listen = ["80"]
 serverName = ["agentstudio-test.sdkwork.com", "agentstudio-test.birdcoder.com", "agentstudio-test.dtupay.com", "agentstudio-test.noaper.com", "agentstudio-test.sdkwork.cn", "agentstudio-test.birdcoder.cn", "agentstudio-test.dtupay.cn", "agentstudio-test.noaper.cn", "agentstudio-test.skubc.com", "agentstudio-test.skubc.cn", "agentstudio-test.zowalk.com", "agentstudio-test.zowalk.cn", "agentstudio-test.offer86.com", "agentstudio-test.offer86.cn", "agentstudio-test.86offer.com", "agentstudio-test.86offer.cn", "agentstudio-app-test.sdkwork.com", "agentstudio-app-test.birdcoder.com", "agentstudio-app-test.dtupay.com", "agentstudio-app-test.noaper.com", "agentstudio-app-test.sdkwork.cn", "agentstudio-app-test.birdcoder.cn", "agentstudio-app-test.dtupay.cn", "agentstudio-app-test.noaper.cn", "agentstudio-app-test.skubc.com", "agentstudio-app-test.skubc.cn", "agentstudio-app-test.zowalk.com", "agentstudio-app-test.zowalk.cn", "agentstudio-app-test.offer86.com", "agentstudio-app-test.offer86.cn", "agentstudio-app-test.86offer.com", "agentstudio-app-test.86offer.cn", "agentstudio-admin-test.sdkwork.com", "agentstudio-admin-test.birdcoder.com", "agentstudio-admin-test.dtupay.com", "agentstudio-admin-test.noaper.com", "agentstudio-admin-test.sdkwork.cn", "agentstudio-admin-test.birdcoder.cn", "agentstudio-admin-test.dtupay.cn", "agentstudio-admin-test.noaper.cn", "agentstudio-admin-test.skubc.com", "agentstudio-admin-test.skubc.cn", "agentstudio-admin-test.zowalk.com", "agentstudio-admin-test.zowalk.cn", "agentstudio-admin-test.offer86.com", "agentstudio-admin-test.offer86.cn", "agentstudio-admin-test.86offer.com", "agentstudio-admin-test.86offer.cn"]
-include = ["snippets/gateway-locations.nonproduction.conf"]
+include = ["snippets/adaptive-web.named-locations.conf", "snippets/gateway-api-locations.nonproduction.conf"]
+
+[[http.server.location]]
+match = "/"
+include = ["snippets/adaptive-web.dispatch.conf"]
 

@@ -1,0 +1,13 @@
+environment = "demo"
+
+[http]
+
+[[http.server]]
+listen = ["80"]
+serverName = ["agentstudio-demo.sdkwork.com", "agentstudio-demo.birdcoder.com", "agentstudio-demo.dtupay.com", "agentstudio-demo.noaper.com", "agentstudio-demo.sdkwork.cn", "agentstudio-demo.birdcoder.cn", "agentstudio-demo.dtupay.cn", "agentstudio-demo.noaper.cn", "agentstudio-demo.skubc.com", "agentstudio-demo.skubc.cn", "agentstudio-demo.zowalk.com", "agentstudio-demo.zowalk.cn", "agentstudio-demo.offer86.com", "agentstudio-demo.offer86.cn", "agentstudio-demo.86offer.com", "agentstudio-demo.86offer.cn", "agentstudio-app-demo.sdkwork.com", "agentstudio-app-demo.birdcoder.com", "agentstudio-app-demo.dtupay.com", "agentstudio-app-demo.noaper.com", "agentstudio-app-demo.sdkwork.cn", "agentstudio-app-demo.birdcoder.cn", "agentstudio-app-demo.dtupay.cn", "agentstudio-app-demo.noaper.cn", "agentstudio-app-demo.skubc.com", "agentstudio-app-demo.skubc.cn", "agentstudio-app-demo.zowalk.com", "agentstudio-app-demo.zowalk.cn", "agentstudio-app-demo.offer86.com", "agentstudio-app-demo.offer86.cn", "agentstudio-app-demo.86offer.com", "agentstudio-app-demo.86offer.cn", "agentstudio-admin-demo.sdkwork.com", "agentstudio-admin-demo.birdcoder.com", "agentstudio-admin-demo.dtupay.com", "agentstudio-admin-demo.noaper.com", "agentstudio-admin-demo.sdkwork.cn", "agentstudio-admin-demo.birdcoder.cn", "agentstudio-admin-demo.dtupay.cn", "agentstudio-admin-demo.noaper.cn", "agentstudio-admin-demo.skubc.com", "agentstudio-admin-demo.skubc.cn", "agentstudio-admin-demo.zowalk.com", "agentstudio-admin-demo.zowalk.cn", "agentstudio-admin-demo.offer86.com", "agentstudio-admin-demo.offer86.cn", "agentstudio-admin-demo.86offer.com", "agentstudio-admin-demo.86offer.cn"]
+include = ["snippets/adaptive-web.named-locations.conf", "snippets/gateway-api-locations.nonproduction.conf"]
+
+[[http.server.location]]
+match = "/"
+include = ["snippets/adaptive-web.dispatch.conf"]
+
