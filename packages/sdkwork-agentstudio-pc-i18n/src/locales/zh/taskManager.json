@@ -1,9 +1,0 @@
-{
-  "activeTasks": "{{count, number}} 个活动任务",
-  "allCompleted": "所有任务均已完成",
-  "clearCompleted": "清除已完成项",
-  "noRecentTasks": "暂无最近任务",
-  "processing": "处理中...",
-  "finalizing": "收尾中...",
-  "failedTryAgain": "任务执行失败，请重试。"
-}

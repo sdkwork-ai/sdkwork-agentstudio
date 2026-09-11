@@ -1,7 +1,0 @@
-{
-  "version": 1,
-  "autoUpgradeEnabled": false,
-  "approvalMode": "manual",
-  "defaultChannel": "stable",
-  "maxRetainedHistoricalPackages": 3
-}
