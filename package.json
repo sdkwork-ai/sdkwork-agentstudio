@@ -11,7 +11,6 @@
     "dev:desktop:sqlite": "sdkwork-run-pnpm --dir packages/sdkwork-agentstudio-pc-desktop dev:desktop",
     "dev:desktop:fast": "tauri-dev-fast.cmd",
     "dev:server": "pnpm exec sdkwork-app dev --runtime-target server --deployment-profile standalone",
-    "dev:browser:sqlite": "sdkwork-run-pnpm --filter @sdkwork/agentstudio-pc-web dev",
     "start": "sdkwork-run-pnpm --dir packages/sdkwork-agentstudio-pc-server start",
     "build": "pnpm exec sdkwork-app build",
     "test": "pnpm exec sdkwork-app test",
@@ -33,6 +32,8 @@
     "docs:preview": "sdkwork-run-node scripts/run-vitepress.mjs preview docs --host 127.0.0.1 --port 4174",
     "lint": "sdkwork-run-pnpm --filter @sdkwork/agentstudio-pc-web lint && sdkwork-run-pnpm --filter @sdkwork/agentstudio-pc-desktop lint && sdkwork-run-pnpm check:arch && sdkwork-run-pnpm check:parity && sdkwork-run-pnpm check:automation",
     "check:i18n": "sdkwork-run-node scripts/check-i18n-contract.mjs",
+    "check:cors-standard": "node ../sdkwork-specs/tools/check-cors-standard.mjs --root .",
+    "check:i18n-standard": "node ../sdkwork-specs/tools/check-i18n-standard.mjs --root .",
     "clean": "pnpm exec sdkwork-app clean",
     "clean:package-modules": "sdkwork-run-node scripts/clean-package-node-modules.mjs",
     "db:validate": "sdkwork-run-node scripts/run-cargo.mjs run --manifest-path ../sdkwork-database/Cargo.toml --bin sdkwork-db -- validate --app-root .",
@@ -119,7 +120,7 @@
     "_sdkwork:build": "sdkwork-run-pnpm build:web",
     "_sdkwork:test": "sdkwork-run-pnpm test:user-center-standard && sdkwork-run-pnpm check:arch && sdkwork-run-pnpm check:parity",
     "_sdkwork:check": "sdkwork-run-pnpm check:arch && sdkwork-run-pnpm check:parity && sdkwork-run-pnpm check:automation",
-    "_sdkwork:verify": "sdkwork-run-pnpm lint && sdkwork-run-pnpm check && sdkwork-run-pnpm test && sdkwork-run-pnpm build",
+    "_sdkwork:verify": "sdkwork-run-pnpm lint && sdkwork-run-pnpm check && sdkwork-run-pnpm test && sdkwork-run-pnpm build && sdkwork-run-pnpm check:cors-standard && sdkwork-run-pnpm check:i18n-standard",
     "_sdkwork:clean": "sdkwork-run-pnpm --filter @sdkwork/agentstudio-pc-web clean",
     "dev:standalone": "pnpm exec sdkwork-app dev --deployment-profile standalone",
     "dev:cloud": "pnpm exec sdkwork-app dev --deployment-profile cloud",
@@ -138,7 +139,8 @@
     "api:assembly:materialize": "node ../sdkwork-specs/tools/materialize-api-assembly.mjs --root .",
     "api:assembly:validate": "node ../sdkwork-specs/tools/validate-api-assembly.mjs --root .",
     "db:postgres:plan": "cargo run --manifest-path ../sdkwork-database/Cargo.toml -p sdkwork-database-cli -- --app-root . plan --engine postgres",
-    "db:postgres:init": "cargo run --manifest-path ../sdkwork-database/Cargo.toml -p sdkwork-database-cli -- --app-root . init --engine postgres"
+    "db:postgres:init": "cargo run --manifest-path ../sdkwork-database/Cargo.toml -p sdkwork-database-cli -- --app-root . init --engine postgres",
+    "dev:browser:postgres": "pnpm exec sdkwork-app dev --runtime-target browser --deployment-profile standalone"
   },
   "dependencies": {
     "@sdkwork/app-topology": "workspace:*",

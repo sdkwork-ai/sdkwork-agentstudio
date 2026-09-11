@@ -1,8 +1,12 @@
 [package]
+rust-version.workspace = true
 name = "sdkwork-api-agentstudio-standalone-gateway"
 version.workspace = true
 edition.workspace = true
 
+
+[lints]
+workspace = true
 [dependencies]
 sdkwork-api-agentstudio-assembly.workspace = true
 sdkwork-web-bootstrap.workspace = true

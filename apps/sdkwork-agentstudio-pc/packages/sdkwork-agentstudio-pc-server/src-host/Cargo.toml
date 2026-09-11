@@ -1,9 +1,13 @@
 [package]
+rust-version.workspace = true
 name = "sdkwork-agentstudio-standalone-gateway"
 version = "0.1.0"
 edition = "2021"
 autobins = false
 
+
+[lints]
+workspace = true
 [lib]
 name = "sdkwork_agentstudio_server"
 path = "src/lib.rs"
