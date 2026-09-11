@@ -379,6 +379,13 @@ Inside that extracted bundle, `deployments/docker/docker-compose.yml` resolves e
 
 Base deployment from the extracted bundle root:
 
+> Channel note: agentstudio's container path is this extracted-bundle direct
+> compose flow (GPU overlays, Kubernetes chart) — it is **not** the standard
+> `bin/` five-environment deploy channel (`MODULE_BIN_SPEC.md`,
+> `OPERATIONS_SPEC.md`). The `bin/` contract and the operational runbooks live
+> under `docs/runbooks/`; this section stays authoritative for the GPU/K8s
+> surfaces until they are wired into `bin/lib/module.sh`.
+
 ```bash
 export CLAW_SERVER_MANAGE_USERNAME=claw-admin
 export CLAW_SERVER_MANAGE_PASSWORD='replace-with-a-strong-secret'

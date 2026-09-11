@@ -132,6 +132,8 @@ curl -u operator:manage-secret \
 
 容器镜像会直接启动规范的 `app/bin/agentstudio-server` 原生二进制，而不是通过可选的 shell wrapper 间接启动。
 
+> 通道说明：agentstudio 的容器路径是"解压 bundle 直跑 compose（GPU 覆盖层 / Kubernetes chart）"，**不属于**标准 `bin/` 五环境部署通道（`MODULE_BIN_SPEC.md`、`OPERATIONS_SPEC.md`）。标准 `bin/` 契约与运维 runbook 见 `docs/runbooks/`；在 GPU/K8s 面接入 `bin/lib/module.sh` 之前，本节仍是这些面的权威说明。
+
 以下命令需要在解压后的 bundle 根目录执行。Compose 文件会从 `deployments/docker/profiles/*` 解析环境覆盖项，并把 bundle 根目录作为 Docker build context。
 
 基础部署：
