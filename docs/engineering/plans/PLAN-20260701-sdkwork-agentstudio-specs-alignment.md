@@ -89,13 +89,13 @@
 
 ```powershell
 # 在干净的 PowerShell（无 IDE/dev server 占用）中执行
-Move-Item -Path "E:\sdkwork-space\agent-studio" -Destination "E:\sdkwork-space\sdkwork-agentstudio"
+Move-Item -Path "<workspace-root>/agent-studio" -Destination "<workspace-root>/sdkwork-agentstudio"
 ```
 
 校验：
 - `sdkwork-agentstudio/AGENTS.md` 中 `../sdkwork-specs` 相对路径仍可解析 ✅（兄弟目录不变）
 - `sdkwork-agentstudio/pnpm-workspace.yaml` 中 `../sdkwork-iam`、`../sdkwork-drive` 等兄弟相对路径仍有效 ✅
-- 父级 `E:\sdkwork-space\pnpm-workspace.yaml` 为 `packages: []`，不受影响 ✅
+- 父级 `<workspace-root>/pnpm-workspace.yaml` 为 `packages: []`，不受影响 ✅
 - 跨仓引用（`sdkwork-clawrouter/data/app/sdkwork-apps.json`、`sdkwork-birdcoder/scripts/claw-*` 等）需在 Phase 1 同步更新
 
 ### Phase 1 — 命名与身份迁移【Human Review Gate】

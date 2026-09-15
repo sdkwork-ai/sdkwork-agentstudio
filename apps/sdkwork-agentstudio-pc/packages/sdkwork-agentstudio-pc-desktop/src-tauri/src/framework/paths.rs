@@ -778,7 +778,7 @@ mod tests {
     #[test]
     fn managed_roots_does_not_panic_when_optional_derived_roots_are_unavailable() {
         let production_source = include_str!("paths.rs")
-            .split("#[cfg(test)]")
+            .split("#[cfg(test)]") // WORKSPACE-PATH:allow-fixture-block: this module is the file's #[cfg(test)] unit-test fixture data
             .next()
             .expect("production source");
         let managed_roots_source = production_source

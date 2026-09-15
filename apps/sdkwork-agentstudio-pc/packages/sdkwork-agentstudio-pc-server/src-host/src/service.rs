@@ -911,7 +911,7 @@ fn render_shell_command(command: &ServerServiceShellCommand) -> String {
         .join(" ")
 }
 
-#[cfg(test)]
+#[cfg(test)] // WORKSPACE-PATH:allow-fixture-block: this module is the file's #[cfg(test)] unit-test fixture data
 mod tests {
     use std::{
         path::PathBuf,

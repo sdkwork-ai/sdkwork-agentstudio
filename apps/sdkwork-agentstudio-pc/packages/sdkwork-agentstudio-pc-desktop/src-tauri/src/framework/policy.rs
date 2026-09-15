@@ -589,7 +589,7 @@ fn normalize_path(path: &Path) -> PathBuf {
     normalized
 }
 
-#[cfg(test)]
+#[cfg(test)] // WORKSPACE-PATH:allow-fixture-block: this module is the file's #[cfg(test)] unit-test fixture data
 mod tests {
     use super::{
         ensure_not_managed_root, resolve_managed_path, resolve_user_tooling_config_path,

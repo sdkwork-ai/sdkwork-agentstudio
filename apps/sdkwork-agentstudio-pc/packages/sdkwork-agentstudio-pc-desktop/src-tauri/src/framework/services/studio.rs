@@ -7276,7 +7276,7 @@ fn get_nested_value<'a>(value: &'a Value, path: &[&str]) -> Option<&'a Value> {
     Some(current)
 }
 
-#[cfg(test)]
+#[cfg(test)] // WORKSPACE-PATH:allow-fixture-block: this module is the file's #[cfg(test)] unit-test fixture data
 mod tests {
     use super::{
         built_in_openclaw_last_error, built_in_openclaw_lifecycle, bundled_openclaw_version,

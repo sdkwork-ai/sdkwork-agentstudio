@@ -1472,7 +1472,7 @@ fn allocate_gateway_port(requested_port: u16) -> Result<u16> {
     Ok(active_port)
 }
 
-#[cfg(test)]
+#[cfg(test)] // WORKSPACE-PATH:allow-fixture-block: this module is the file's #[cfg(test)] unit-test fixture data
 mod tests {
     use super::{
         collect_openclaw_runtime_channel_ids, copy_directory_recursive, load_manifest,

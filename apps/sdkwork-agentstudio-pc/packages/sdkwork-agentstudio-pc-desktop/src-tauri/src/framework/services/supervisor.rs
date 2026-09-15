@@ -3086,7 +3086,7 @@ mod tests {
         let force_shutdown_source = production_source
             .split("fn force_process_shutdown")
             .nth(1)
-            .and_then(|tail| tail.split("#[cfg(test)]").next())
+            .and_then(|tail| tail.split("#[cfg(test)]").next()) // WORKSPACE-PATH:allow-fixture-block: this module is the file's #[cfg(test)] unit-test fixture data
             .expect("force shutdown source");
 
         assert!(

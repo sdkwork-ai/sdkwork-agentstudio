@@ -137,7 +137,7 @@ fn format_command(command: &str, args: &[String]) -> String {
     format!("{command} {}", args.join(" "))
 }
 
-#[cfg(test)]
+#[cfg(test)] // WORKSPACE-PATH:allow-fixture-block: this module is the file's #[cfg(test)] unit-test fixture data
 mod tests {
     use super::{prepare_request_with_env, ProcessRequest};
     use crate::framework::{paths::resolve_paths_for_root, policy::ExecutionPolicy};

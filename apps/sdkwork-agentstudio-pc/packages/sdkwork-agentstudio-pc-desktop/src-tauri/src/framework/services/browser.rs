@@ -73,7 +73,7 @@ pub fn validate_external_url(url: &str, allow_external_http: bool) -> Result<()>
     })
 }
 
-#[cfg(test)]
+#[cfg(test)] // WORKSPACE-PATH:allow-fixture-block: this module is the file's #[cfg(test)] unit-test fixture data
 mod tests {
     use super::BrowserService;
     use crate::framework::config::SecurityConfig;

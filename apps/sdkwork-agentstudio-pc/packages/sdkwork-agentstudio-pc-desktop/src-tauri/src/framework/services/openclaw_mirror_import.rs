@@ -2641,7 +2641,7 @@ mod tests {
     #[test]
     fn openclaw_mirror_import_production_path_has_no_panic_exits() {
         let source = include_str!("openclaw_mirror_import.rs");
-        let production_source = source.split("#[cfg(test)]").next().unwrap_or(source);
+        let production_source = source.split("#[cfg(test)]").next().unwrap_or(source); // WORKSPACE-PATH:allow-fixture-block: this module is the file's #[cfg(test)] unit-test fixture data
         let forbidden_patterns = [
             ".expect(",
             ".unwrap(",

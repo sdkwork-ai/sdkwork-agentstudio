@@ -66,7 +66,7 @@ The bundled OpenClaw release metadata is now pinned to `2026.4.2` in `config/ope
 
 10. Windows short-path OpenClaw alias refresh could still fail on locked legacy mirror roots.
    - Observed failure:
-     - `EPERM: operation not permitted, unlink 'D:\.sdkwork-bc\agent-studio\openclaw\runtime.zip'`
+     - `EPERM: operation not permitted, unlink '<device-state-dir>/.sdkwork-bc\agent-studio\openclaw\runtime.zip'`
    - Root cause:
      - older workspaces could retain a real directory at the stable short-path alias root instead of a junction
      - the refresh path previously required deleting that root before recreating the alias
@@ -262,7 +262,7 @@ The bundled OpenClaw release metadata is now pinned to `2026.4.2` in `config/ope
   - `--register-openclaw-cli --install-root "$INSTDIR"`
 - The runtime prewarm step is now mandatory. If it fails, the installer aborts.
 - NSIS now forwards the canonical installer root explicitly into both embedded CLI actions so runtime preparation, CLI registration, and later startup all resolve the same managed install root instead of relying on implicit `current_exe()` layout assumptions.
-- If the legacy default short-path alias root under `D:\.sdkwork-bc\...` is locked, prepare now auto-switches to the persisted workspace-local fallback mirror root instead of requiring a manual environment override.
+- If the legacy default short-path alias root under `<device-state-dir>/.sdkwork-bc\...` is locked, prepare now auto-switches to the persisted workspace-local fallback mirror root instead of requiring a manual environment override.
 
 ### Linux
 
@@ -328,16 +328,16 @@ The following targeted checks passed after the latest changes:
 - `node --experimental-strip-types packages/sdkwork-agentstudio-pc-web/viteWorkspaceResolver.test.ts`
 - `node scripts/package-release-assets.test.mjs`
 - `node scripts/release/finalize-release-assets.test.mjs`
-- `$env:CARGO_TARGET_DIR='C:\Users\admin\.codex\memories\agent-studio-cargo-target'; $env:CARGO_INCREMENTAL='0'; $env:CARGO_BUILD_JOBS='1'; $env:RUSTFLAGS='-C debuginfo=0'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-server/src-host/Cargo.toml inject_server_host_metadata_ -- --nocapture`
-- `$env:CARGO_TARGET_DIR='C:\Users\admin\.codex\memories\agent-studio-cargo-target'; $env:CARGO_INCREMENTAL='0'; $env:CARGO_BUILD_JOBS='1'; $env:RUSTFLAGS='-C debuginfo=0'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-server/src-host/Cargo.toml openapi_v1_document_describes_host_platform_state_store_driver -- --nocapture`
+- `$env:CARGO_TARGET_DIR='<home>\.codex\memories\agent-studio-cargo-target'; $env:CARGO_INCREMENTAL='0'; $env:CARGO_BUILD_JOBS='1'; $env:RUSTFLAGS='-C debuginfo=0'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-server/src-host/Cargo.toml inject_server_host_metadata_ -- --nocapture`
+- `$env:CARGO_TARGET_DIR='<home>\.codex\memories\agent-studio-cargo-target'; $env:CARGO_INCREMENTAL='0'; $env:CARGO_BUILD_JOBS='1'; $env:RUSTFLAGS='-C debuginfo=0'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-server/src-host/Cargo.toml openapi_v1_document_describes_host_platform_state_store_driver -- --nocapture`
 - `pnpm.cmd --filter @sdkwork/agentstudio-pc-web lint`
 - `pnpm.cmd check:sdkwork-core`
 - `node scripts/run-sdkwork-auth-check.mjs`
 - `node scripts/run-sdkwork-agent-check.mjs`
 - `node scripts/run-sdkwork-chat-check.mjs`
-- `$env:CARGO_TARGET_DIR='C:\Users\admin\.codex\memories\agent-studio-rust-target'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-desktop/src-tauri/Cargo.toml rejects_ -- --nocapture`
-- `$env:CARGO_TARGET_DIR='C:\Users\admin\.codex\memories\agent-studio-rust-target'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-desktop/src-tauri/Cargo.toml installs_bundled_runtime_from_runtime_archive_bridge -- --nocapture`
-- `$env:CARGO_TARGET_DIR='C:\Users\admin\.codex\memories\agent-studio-rust-target'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-desktop/src-tauri/Cargo.toml reinstalls_archived_install_when_runtime_sidecar_is_missing -- --nocapture`
+- `$env:CARGO_TARGET_DIR='<home>\.codex\memories\agent-studio-rust-target'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-desktop/src-tauri/Cargo.toml rejects_ -- --nocapture`
+- `$env:CARGO_TARGET_DIR='<home>\.codex\memories\agent-studio-rust-target'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-desktop/src-tauri/Cargo.toml installs_bundled_runtime_from_runtime_archive_bridge -- --nocapture`
+- `$env:CARGO_TARGET_DIR='<home>\.codex\memories\agent-studio-rust-target'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-desktop/src-tauri/Cargo.toml reinstalls_archived_install_when_runtime_sidecar_is_missing -- --nocapture`
 
 Additional verification notes for the shared SDK preparation hardening:
 
@@ -345,10 +345,10 @@ Additional verification notes for the shared SDK preparation hardening:
 - A direct end-to-end run of `node scripts/prepare-shared-sdk-packages.mjs` could not be completed inside this Codex sandbox because the script now correctly repairs `node_modules` links inside sibling shared SDK workspaces outside the writable root, and the sandbox rejected that write with:
   - `EPERM: operation not permitted, mkdir '...retired generic app SDK TypeScript package\\node_modules\\@sdkwork'`
 - This `EPERM` is a sandbox boundary in the current review environment, not the old `ERR_PNPM_ENOSPC` behavior. The previous full-workspace install escalation path has been removed from the preparation script.
-- `$env:CARGO_TARGET_DIR='C:\Users\admin\.codex\memories\agent-studio-rust-target'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-desktop/src-tauri/Cargo.toml host_platform_status_ -- --nocapture`
-- `$env:CARGO_TARGET_DIR='C:\Users\admin\.codex\memories\agent-studio-rust-target'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-desktop/src-tauri/Cargo.toml embedded_host_bootstrap_serves_root_html_with_desktop_combined_host_metadata -- --nocapture`
-- `$env:CARGO_TARGET_DIR='C:\Users\admin\.codex\memories\agent-studio-rust-target'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-desktop/src-tauri/Cargo.toml framework_context_exposes_live_desktop_host_status -- --nocapture`
-- `$env:CARGO_TARGET_DIR='C:\Users\admin\.codex\memories\agent-studio-rust-target'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-server/src-host/Cargo.toml desktop_combined_ -- --nocapture`
+- `$env:CARGO_TARGET_DIR='<home>\.codex\memories\agent-studio-rust-target'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-desktop/src-tauri/Cargo.toml host_platform_status_ -- --nocapture`
+- `$env:CARGO_TARGET_DIR='<home>\.codex\memories\agent-studio-rust-target'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-desktop/src-tauri/Cargo.toml embedded_host_bootstrap_serves_root_html_with_desktop_combined_host_metadata -- --nocapture`
+- `$env:CARGO_TARGET_DIR='<home>\.codex\memories\agent-studio-rust-target'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-desktop/src-tauri/Cargo.toml framework_context_exposes_live_desktop_host_status -- --nocapture`
+- `$env:CARGO_TARGET_DIR='<home>\.codex\memories\agent-studio-rust-target'; cargo test --manifest-path packages/sdkwork-agentstudio-pc-server/src-host/Cargo.toml desktop_combined_ -- --nocapture`
 - `node scripts/run-sdkwork-core-check.mjs`
 - `node scripts/run-sdkwork-auth-check.mjs`
 - `pnpm.cmd build`
@@ -369,7 +369,7 @@ Latest full-build evidence from the fresh workspace run:
 ## Remaining Risks
 
 1. Default workspace Rust target directories under `packages/sdkwork-agentstudio-pc-desktop/src-tauri/target*` still have disk-pressure risk.
-   - Targeted Rust verification for the changed host/runtime surfaces passed by redirecting `CARGO_TARGET_DIR` to `C:\Users\admin\.codex\memories\agent-studio-rust-target`.
+   - Targeted Rust verification for the changed host/runtime surfaces passed by redirecting `CARGO_TARGET_DIR` to `<home>\.codex\memories\agent-studio-rust-target`.
    - Full default-path `cargo test` and `cargo check` sweeps were not rerun because the large local target directories could not be destructively cleaned under the current tool policy.
 
 2. Production bundles still report a non-blocking generic build-plugin timing warning.

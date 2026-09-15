@@ -279,7 +279,7 @@ fn resolve_launcher_executable_path() -> Result<PathBuf> {
     env::current_exe().map_err(Into::into)
 }
 
-#[cfg(test)]
+#[cfg(test)] // WORKSPACE-PATH:allow-fixture-block: this module is the file's #[cfg(test)] unit-test fixture data
 mod tests {
     use super::PathRegistrationService;
     use crate::framework::paths::resolve_paths_for_root;

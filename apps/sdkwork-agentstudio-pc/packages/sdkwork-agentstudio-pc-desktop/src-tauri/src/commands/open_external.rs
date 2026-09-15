@@ -14,7 +14,7 @@ pub fn open_external(
         .map_err(|error| error.to_string())
 }
 
-#[cfg(test)]
+#[cfg(test)] // WORKSPACE-PATH:allow-fixture-block: this module is the file's #[cfg(test)] unit-test fixture data
 mod tests {
     use crate::framework::{config::SecurityConfig, services::browser::BrowserService};
 

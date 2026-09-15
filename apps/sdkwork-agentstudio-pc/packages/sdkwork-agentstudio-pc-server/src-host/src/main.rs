@@ -320,7 +320,7 @@ mod tests {
         let mut offenders = Vec::new();
 
         for (source_name, source) in sources {
-            let production_source = source.split("#[cfg(test)]").next().unwrap_or(source);
+            let production_source = source.split("#[cfg(test)]").next().unwrap_or(source); // WORKSPACE-PATH:allow-fixture-block: this module is the file's #[cfg(test)] unit-test fixture data
             for (index, line) in production_source.lines().enumerate() {
                 for pattern in forbidden_patterns {
                     if line.contains(pattern) {

@@ -21,7 +21,7 @@
 
 ### Clean-room reproduction
 
-1. A fresh workspace clone under `D:\\temp\\claw-release-repro` reproduced the release-only failure path instead of relying on the existing multi-repo local environment.
+1. A fresh workspace clone under `<device-state-dir>\\claw-release-repro` reproduced the release-only failure path instead of relying on the existing multi-repo local environment.
 2. Before any fixes, `pnpm sdk:prepare-shared` in that clean room failed on Windows because `resolveWorkspaceInstalledPackageRoot()` could not find `@typescript-eslint/eslint-plugin` once pnpm's virtual store shortened the `.pnpm` directory name.
 3. After fixing that resolver, the same clean room advanced to the GitHub-matching failure: `pnpm lint` reported missing modules for:
    - `@sdkwork/im-sdk`
@@ -91,7 +91,7 @@ Observed result:
 2. `pnpm lint` passed after the IM SDK pin and shared SDK preparation fixes.
 3. `pnpm check:desktop` and `pnpm check:server` both passed.
 4. `pnpm build`, `pnpm build:server`, and `pnpm docs:build` all passed.
-5. A clean-room reproduction under `D:\\temp\\claw-release-repro` advanced past the original IM SDK failure and consumed the pinned IM SDK commit `c71a0f115c08cb164d5a857cdac15ea6d3adc006`.
+5. A clean-room reproduction under `<device-state-dir>\\claw-release-repro` advanced past the original IM SDK failure and consumed the pinned IM SDK commit `c71a0f115c08cb164d5a857cdac15ea6d3adc006`.
 
 ## Status
 

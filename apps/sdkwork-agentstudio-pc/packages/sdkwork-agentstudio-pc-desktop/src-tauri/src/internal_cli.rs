@@ -583,7 +583,7 @@ fn map_windows_service_error(error: windows_service::Error) -> FrameworkError {
     }
 }
 
-#[cfg(test)]
+#[cfg(test)] // WORKSPACE-PATH:allow-fixture-block: this module is the file's #[cfg(test)] unit-test fixture data
 mod tests {
     use super::{
         prepare_bundled_openclaw_runtime_for_current_install,

@@ -2,7 +2,7 @@ use crate::{framework::dialog::SelectFilesOptions, state::AppState};
 use tauri::{Manager, Runtime};
 use tauri_plugin_dialog::{DialogExt, FileDialogBuilder};
 
-#[cfg(test)]
+#[cfg(test)] // WORKSPACE-PATH:allow-fixture-block: this module is the file's #[cfg(test)] unit-test fixture data
 mod tests {
     use crate::framework::services::dialog::DialogService;
     use std::path::PathBuf;
