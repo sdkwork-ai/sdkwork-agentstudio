@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "appId": "sdkwork-agentstudio",
+  "declarations": [
+    {
+      "appResourceType": "chat.message_attachment",
+      "appResourceIdKind": "entity",
+      "scene": "chat-message",
+      "source": "sdkwork-agentstudio-pc",
+      "uploadProfileCode": "attachment",
+      "retention": "long_term",
+      "purpose": "File attached to an agent studio chat message so the conversation can reference out-of-band content."
+    }
+  ]
+}

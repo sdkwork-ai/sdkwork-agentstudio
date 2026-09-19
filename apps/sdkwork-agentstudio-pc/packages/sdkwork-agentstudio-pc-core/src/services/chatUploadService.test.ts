@@ -161,10 +161,10 @@ await runTest('chatUploadService normalizes Drive uploader request attribution a
   assert.equal(driveRequests[0]?.organizationId, '0');
   assert.equal(driveRequests[0]?.userId, 'user-001');
   assert.equal(driveRequests[0]?.appId, 'agent-studio');
-  assert.equal(driveRequests[0]?.appResourceType, 'chat-message-attachment');
+  assert.equal(driveRequests[0]?.appResourceType, 'chat.message_attachment');
   assert.equal(driveRequests[0]?.appResourceId, 'draft-attachment');
-  assert.equal(driveRequests[0]?.scene, 'chat_message');
-  assert.equal(driveRequests[0]?.source, 'agent-studio-chat');
+  assert.equal(driveRequests[0]?.scene, 'chat-message');
+  assert.equal(driveRequests[0]?.source, 'sdkwork-agentstudio-pc');
   assert.equal(driveRequests[0]?.uploadProfileCode, 'attachment');
   assert.deepEqual(driveRequests[0]?.retention, { mode: 'long_term' });
 

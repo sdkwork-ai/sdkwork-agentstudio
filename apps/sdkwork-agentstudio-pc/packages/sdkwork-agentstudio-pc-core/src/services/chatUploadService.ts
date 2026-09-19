@@ -16,6 +16,7 @@ import {
   getAppSdkClientConfig,
   getDriveAppSdkClientWithSession,
 } from '../sdk/useAppSdkClient.ts';
+import { AGENTSTUDIO_PC_CHAT_MESSAGE_ATTACHMENT_UPLOAD } from '../sdk/uploadDeclaration.ts';
 
 type ChatUploadDriveUploader = Pick<DriveUploaderClient, 'uploadAttachment'>;
 type ChatUploadClient = {
@@ -189,10 +190,12 @@ function resolveChatUploadContext(params: {
     anonymousId,
     operatorId,
     appId,
-    appResourceType: params.base.appResourceType || 'chat-message-attachment',
+    appResourceType:
+      params.base.appResourceType ||
+      AGENTSTUDIO_PC_CHAT_MESSAGE_ATTACHMENT_UPLOAD.appResourceType,
     appResourceId,
-    scene: params.base.scene || 'chat_message',
-    source: params.base.source || 'agent-studio-chat',
+    scene: params.base.scene || AGENTSTUDIO_PC_CHAT_MESSAGE_ATTACHMENT_UPLOAD.scene,
+    source: params.base.source || AGENTSTUDIO_PC_CHAT_MESSAGE_ATTACHMENT_UPLOAD.source,
   };
 }
 
