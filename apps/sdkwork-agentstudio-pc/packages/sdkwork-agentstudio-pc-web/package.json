@@ -16,6 +16,7 @@
   "dependencies": {
     "@sdkwork/agentstudio-pc-i18n": "workspace:*",
     "@sdkwork/agentstudio-pc-shell": "workspace:*",
+    "@sdkwork/iam-credential-entry": "workspace:*",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwindcss": "^4.2.2",
