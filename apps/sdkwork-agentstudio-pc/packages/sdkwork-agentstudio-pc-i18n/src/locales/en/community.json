@@ -320,6 +320,7 @@
       "enterTurnaround": "Please enter a turnaround commitment",
       "generateFailed": "Content generation failed",
       "publishFailed": "Failed to publish entry",
+      "coverUploadFailed": "Cover upload failed",
       "publishSuccess": "Entry published successfully"
     }
   },

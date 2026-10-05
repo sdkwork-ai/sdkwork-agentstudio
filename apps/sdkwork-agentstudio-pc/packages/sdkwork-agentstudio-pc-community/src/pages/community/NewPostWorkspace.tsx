@@ -38,6 +38,7 @@ import {
   type CommunityDeliveryMode,
   type CommunityServiceLine,
 } from '../../services';
+import { createCommunityCoverUploadService } from '@sdkwork/agentstudio-pc-core/services/communityCoverUploadService';
 import { toast } from 'sonner';
 
 const CATEGORY_IDS = ['job-seeking', 'recruitment', 'services', 'partnerships', 'news'] as const;
@@ -182,11 +183,24 @@ export function NewPostWorkspace() {
       return;
     }
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setCoverImage(reader.result as string);
-    };
-    reader.readAsDataURL(file);
+    // The cover uploads through the shared Drive cover service and the post
+    // stores the `drive://` reference — a locally-read base64 data URL would
+    // be a fake upload (`DRIVE_SPEC.md` §18). The local object URL is
+    // presentation-only preview state and never persisted.
+    const previewUrl = URL.createObjectURL(file);
+    setCoverImage(previewUrl);
+    void createCommunityCoverUploadService()
+      .uploadCover(file)
+      .then((uri) => {
+        setCoverImage(uri);
+      })
+      .catch(() => {
+        toast.error(t('community.newPost.toasts.coverUploadFailed'));
+        setCoverImage('');
+      })
+      .finally(() => {
+        URL.revokeObjectURL(previewUrl);
+      });
   };
 
   const addImage = () => {

@@ -10,6 +10,15 @@
       "uploadProfileCode": "attachment",
       "retention": "long_term",
       "purpose": "File attached to an agent studio chat message so the conversation can reference out-of-band content."
+    },
+    {
+      "appResourceType": "community.post_media",
+      "appResourceIdKind": "entity",
+      "scene": "community-post-cover",
+      "source": "sdkwork-agentstudio-pc",
+      "uploadProfileCode": "image",
+      "retention": "long_term",
+      "purpose": "Community post cover image uploaded from the agent studio community surface."
     }
   ]
 }

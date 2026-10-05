@@ -320,6 +320,7 @@
       "enterTurnaround": "请输入交付时效",
       "generateFailed": "内容生成失败",
       "publishFailed": "发布失败",
+      "coverUploadFailed": "封面上传失败",
       "publishSuccess": "发布成功"
     }
   },

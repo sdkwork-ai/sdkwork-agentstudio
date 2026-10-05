@@ -40,7 +40,23 @@ export const AGENTSTUDIO_PC_CHAT_MESSAGE_ATTACHMENT_UPLOAD = {
   uploadProfileCode: 'attachment',
 } as const satisfies AgentStudioPcUploadDeclarationEntry;
 
+/**
+ * The cover image of a community post published from the agent studio
+ * community surface. The stored value is the `drive://` reference — never a
+ * base64 data URL (`DRIVE_SPEC.md` §18).
+ */
+export const AGENTSTUDIO_PC_COMMUNITY_POST_COVER_UPLOAD = {
+  appResourceIdKind: 'entity',
+  appResourceType: 'community.post_media',
+  purpose: 'Community post cover image uploaded from the agent studio community surface.',
+  retention: 'long_term',
+  scene: 'community-post-cover',
+  source: AGENTSTUDIO_PC_UPLOAD_SOURCE,
+  uploadProfileCode: 'image',
+} as const satisfies AgentStudioPcUploadDeclarationEntry;
+
 /** Every declared upload purpose for this application. */
 export const AGENTSTUDIO_PC_UPLOAD_DECLARATIONS: readonly AgentStudioPcUploadDeclarationEntry[] = [
   AGENTSTUDIO_PC_CHAT_MESSAGE_ATTACHMENT_UPLOAD,
+  AGENTSTUDIO_PC_COMMUNITY_POST_COVER_UPLOAD,
 ];
