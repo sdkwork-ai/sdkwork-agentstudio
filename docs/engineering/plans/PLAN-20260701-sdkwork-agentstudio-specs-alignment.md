@@ -68,7 +68,7 @@
 | 包命名 | `sdkwork-agentstudio-pc-*`（`@sdkwork/agentstudio-pc-*`） | `sdkwork-agentstudio-pc-*`（`@sdkwork/agentstudio-pc-*`）按 NAMING_SPEC §2 | ❌（需迁移评估） |
 | `app.key` | `agent-studio` | `agentstudio`（含 platform_app 注册、desktopAppId、containerImage 联动） | ❌（需人工评审） |
 | 部署清单 | 有 `deployments/docker`、`deployments/kubernetes`，**无 `deployments/deploy.yaml`** | `deployments/deploy.yaml`（SDKWORK_DEPLOY_SPEC） | ❌ |
-| 打包/发布 | 有 `scripts/release/*` 与 `sdkwork.workflow.json`? | `sdkwork.workflow.json` + `sdkwork-github-workflow`（GITHUB_WORKFLOW_SPEC） | ⚠️ 需核验 |
+| 打包/发布 | 有 `scripts/release/*` 与 `agent.workflow.json`? | `agent.workflow.json` + `sdkwork-github-workflow`（GITHUB_WORKFLOW_SPEC） | ⚠️ 需核验 |
 | API 信封 | 成功裸 `Json<Value>`；错误字符串 `code` | `SdkWorkApiResponse{code:0,data,traceId}` + `ProblemDetail`（数字 code） | ❌ |
 | API 路由前缀 | `/claw/api/v1`、`/claw/health`、`/claw/manage/v1` | app-api `/app/v3/api`、backend-api `/backend/v3/api` 或经批准 open-api 前缀 | ❌ |
 | OpenAPI 契约 | `openapi.rs` 自生成，无 `x-sdkwork-request-context`/`x-sdkwork-api-surface`/operationId | OpenAPI 3.1.2 + 路由清单 + 框架扩展 | ❌ |
@@ -212,7 +212,7 @@ sdkwork-database-sqlx = { path = "../../sdkwork-database/crates/sdkwork-database
 ### Phase 7 — 部署 / 打包对齐
 
 7.1 `deployments/deploy.yaml`：按 SDKWORK_DEPLOY_SPEC 创建（当前缺失），声明 adaptive Web/API/WebSocket、nginx 站点生成、客户端包编排；`deployments/docker`、`deployments/kubernetes` 作为其下游产物。
-7.2 GitHub workflow：核验/补全 `sdkwork.workflow.json` + `sdkwork-github-workflow` 复用流程（GITHUB_WORKFLOW_SPEC），矩阵、依赖 checkout、产物发布、attestation、部署环境。
+7.2 GitHub workflow：核验/补全 `agent.workflow.json` + `sdkwork-github-workflow` 复用流程（GITHUB_WORKFLOW_SPEC），矩阵、依赖 checkout、产物发布、attestation、部署环境。
 7.3 部署配置对齐 DEPLOYMENT_SPEC：standalone/cloud parity、Java/Rust 切换、runtime bootstrap；`configs/` 与 `ENVIRONMENT_SPEC.md` 对齐。
 
 ### Phase 8 — component.spec.json / specs 补全
