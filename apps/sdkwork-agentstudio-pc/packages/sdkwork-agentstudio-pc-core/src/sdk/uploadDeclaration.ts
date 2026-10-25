@@ -22,7 +22,7 @@ export interface AgentStudioPcUploadDeclarationEntry {
   readonly uploadProfileCode: string;
 }
 
-/** This application's canonical appId, from `sdkwork.app.config.json` `backend.appId`. */
+/** This application's canonical appId, from `agent.app.config.json` `backend.appId`. */
 export const AGENTSTUDIO_PC_APP_ID = 'sdkwork-agentstudio' as const;
 
 /** The single call-origin label for every upload from this application. */

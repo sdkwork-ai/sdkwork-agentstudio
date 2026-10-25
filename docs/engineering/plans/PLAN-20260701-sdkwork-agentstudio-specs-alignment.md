@@ -15,7 +15,7 @@
 | 项 | 现状 | 期望 | 结论 |
 | --- | --- | --- | --- |
 | `AGENTS.md` + 兼容 shim | 存在，指向 `../sdkwork-specs` | shim 不重复规则 | ✅ |
-| `sdkwork.app.config.json` | 存在 v3 | 存在 | ✅ |
+| `agent.app.config.json` | 存在 v3 | 存在 | ✅ |
 | 模块 `specs/component.spec.json` | 27 个包大部分有 | 每模块必有 | ✅ |
 | 根 `specs/component.spec.json` | `languages: ["typescript"]`，缺失 Rust 与框架规范链接 | 声明 Rust + 链接 RUST_CODE_SPEC/WEB_FRAMEWORK_SPEC/DATABASE_FRAMEWORK_SPEC/DRIVE_SPEC/WEB_BACKEND_SPEC/API_SPEC | ❌ |
 | `canonicalSpecs` 覆盖 | 未含 RUST_CODE_SPEC、WEB_FRAMEWORK_SPEC、DATABASE_FRAMEWORK_SPEC、WEB_BACKEND_SPEC、API_SPEC、DRIVE_SPEC、DISCOVERY_SPEC、RPC_SPEC、SECURITY_SPEC | 按 README 任务矩阵补全 | ❌ |
@@ -103,7 +103,7 @@ Move-Item -Path "<workspace-root>/agent-studio" -Destination "<workspace-root>/s
 目标：统一 `application-code = agentstudio`，对齐 NAMING_SPEC §0.1/§2。因涉及 platform_app 注册、desktopAppId、containerImage、跨仓引用，需人工评审与兼容窗口（MIGRATION_SPEC §4）。
 
 1.1 顶层身份：
-- `sdkwork.app.config.json`：`app.key` `agent-studio`→`agentstudio`；`displayName`/`name`/`officialWebsiteUrl`/`iconUrl`/`containerImage`/`storeUrl`/`environments.*.accessUrl`/`artifacts.installConfig.packages[].url` 全量替换 `agent-studio`→`agentstudio`；`publish.config.workspaceRoot` `apps/agent-studio`→`apps/sdkwork-agentstudio-pc`；`devApp.sourceRoot` 同步。
+- `agent.app.config.json`：`app.key` `agent-studio`→`agentstudio`；`displayName`/`name`/`officialWebsiteUrl`/`iconUrl`/`containerImage`/`storeUrl`/`environments.*.accessUrl`/`artifacts.installConfig.packages[].url` 全量替换 `agent-studio`→`agentstudio`；`publish.config.workspaceRoot` `apps/agent-studio`→`apps/sdkwork-agentstudio-pc`；`devApp.sourceRoot` 同步。
 - `package.json`：`name` `@sdkwork/agentstudio-workspace`→`@sdkwork/agentstudio-workspace`。
 - `specs/component.spec.json`：`component.name`→`agentstudio`、`component.root`→`sdkwork-agentstudio`、`verification.commands` 中 `@sdkwork/agentstudio-workspace`→`@sdkwork/agentstudio-workspace`。
 

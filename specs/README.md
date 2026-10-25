@@ -26,7 +26,7 @@ Root SDKWork standards remain authoritative. Local component specs can narrow or
 
 | Spec | Applies Because |
 | --- | --- |
-| [APP_MANIFEST_SPEC.md](../../sdkwork-specs/APP_MANIFEST_SPEC.md) | sdkwork.app.config.json application registration rules. |
+| [APP_MANIFEST_SPEC.md](../../sdkwork-specs/APP_MANIFEST_SPEC.md) | agent.app.config.json application registration rules. |
 | [APPLICATION_SPEC.md](../../sdkwork-specs/APPLICATION_SPEC.md) | Application shell and module composition. |
 | [APP_SDK_INTEGRATION_SPEC.md](../../sdkwork-specs/APP_SDK_INTEGRATION_SPEC.md) | App SDK composition, appbase IAM runtime, and dependency SDK boundary rules. |
 | [COMPONENT_SPEC.md](../../sdkwork-specs/COMPONENT_SPEC.md) | Local component specs directory and manifest rules. |

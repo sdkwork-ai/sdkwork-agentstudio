@@ -25,7 +25,7 @@ Treat every round as a recursive closure loop: self-review the touched app or cl
 
 ## Hard Rules
 
-- Use `sdkwork.app.config.json`, `specs/component.spec.json`, and application-root `sdks/` as the contract source for remote business capability.
+- Use `agent.app.config.json`, `specs/component.spec.json`, and application-root `sdks/` as the contract source for remote business capability.
 - Consume appbase, drive, messaging, and local-router through their declared dependency SDKs or host adapters.
 - When Agent Studio lacks a product SDK family for a remote method, expose a narrow typed product port and require runtime/composed client injection instead of inventing transport code.
 - If the shared wrapper is incomplete, finish it in the approved core layer before editing feature packages.
