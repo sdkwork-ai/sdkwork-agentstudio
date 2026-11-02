@@ -1,60 +1,81 @@
 {
   "$schema": "https://sdkwork.com/schemas/workflow.spec.v1.json",
-  "appId": "sdkwork-agentstudio",
   "targets": [
     {
-      "name": "web",
+      "id": "web-universal-cloud-browser-zip",
+      "packageId": "web-universal-cloud-browser-zip",
+      "profileBinding": "fixed",
+      "deploymentProfile": "cloud",
+      "runtimeTarget": "browser",
+      "targetPlatform": "web",
+      "clientArchitecture": "pc-web",
+      "profile": "browser",
+      "platform": "web",
+      "architecture": "universal",
       "formats": [
         "zip"
       ],
-      "runtimeTarget": "browser",
-      "deploymentProfile": "cloud",
-      "description": "Browser web bundle for cloud deployment."
+      "runner": "ubuntu-24.04",
+      "outputGlobs": [
+        "dist/web/**"
+      ]
     },
     {
-      "name": "desktop-windows",
-      "formats": [
-        "zip",
-        "nsis"
-      ],
-      "runtimeTarget": "desktop",
+      "id": "windows-x64-standalone-desktop-zip",
+      "packageId": "windows-x64-standalone-desktop-zip",
+      "profileBinding": "fixed",
       "deploymentProfile": "standalone",
-      "platform": "DESKTOP_WINDOWS",
+      "runtimeTarget": "desktop",
+      "targetPlatform": "windows",
+      "clientArchitecture": "tauri",
+      "profile": "desktop",
+      "platform": "windows",
       "architecture": "x64",
-      "description": "Windows desktop bundle (Tauri)."
+      "formats": [
+        "zip"
+      ],
+      "runner": "windows-2022",
+      "outputGlobs": [
+        "dist/desktop/*.msi"
+      ]
     },
     {
-      "name": "desktop-macos",
+      "id": "macos-universal-standalone-desktop-dmg",
+      "packageId": "macos-universal-standalone-desktop-dmg",
+      "profileBinding": "fixed",
+      "deploymentProfile": "standalone",
+      "runtimeTarget": "desktop",
+      "targetPlatform": "macos",
+      "clientArchitecture": "tauri",
+      "profile": "desktop",
+      "platform": "macos",
+      "architecture": "universal",
       "formats": [
         "dmg"
       ],
-      "runtimeTarget": "desktop",
-      "deploymentProfile": "standalone",
-      "platform": "DESKTOP_MACOS",
-      "architecture": "universal",
-      "description": "macOS desktop bundle (Tauri)."
+      "runner": "macos-14",
+      "outputGlobs": [
+        "dist/desktop/*.dmg"
+      ]
     },
     {
-      "name": "desktop-linux",
-      "formats": [
-        "appimage",
-        "deb"
-      ],
-      "runtimeTarget": "desktop",
+      "id": "linux-x64-standalone-desktop-appimage",
+      "packageId": "linux-x64-standalone-desktop-appimage",
+      "profileBinding": "fixed",
       "deploymentProfile": "standalone",
-      "platform": "DESKTOP_LINUX",
+      "runtimeTarget": "desktop",
+      "targetPlatform": "linux",
+      "clientArchitecture": "tauri",
+      "profile": "desktop",
+      "platform": "linux",
       "architecture": "x64",
-      "description": "Linux desktop bundle (Tauri)."
-    },
-    {
-      "name": "server",
       "formats": [
-        "deb",
-        "rpm"
+        "appimage"
       ],
-      "runtimeTarget": "server",
-      "deploymentProfile": "standalone",
-      "description": "Standalone server binary package."
+      "runner": "ubuntu-24.04",
+      "outputGlobs": [
+        "dist/desktop/*.AppImage"
+      ]
     }
   ],
   "dependencies": [
@@ -142,5 +163,14 @@
       "refInput": "SDKWORK_WEB_FRAMEWORK_REF",
       "tokenSecret": "SDKWORK_RELEASE_TOKEN"
     }
-  ]
+  ],
+  "schemaVersion": "2026-06-06.agent.workflow.v1",
+  "app": {
+    "id": "sdkwork-agentstudio",
+    "repository": "sdkwork-ai/sdkwork-agentstudio"
+  },
+  "release": {
+    "artifactPrefix": "sdkwork-agentstudio",
+    "defaultVersion": "0.1.0"
+  }
 }
